@@ -2,7 +2,6 @@
 
 This project is a proof-of-concept for covert file transfer and C2 communication using TCP options. Instead of sending data in the traditional payload, the file data is hidden in the TCP SACK option field—making it hard to detect by standard security monitoring tools. 😎
 
----
 
 > **Note:** These scripts were developed with the help of ChatGPT.
 
@@ -10,7 +9,6 @@ This project is a proof-of-concept for covert file transfer and C2 communication
 
 The idea behind this project is to send file data covertly within TCP packets. The client splits a file into 4-byte chunks, packs each chunk with a unique marker into an 8-byte payload, and sends these chunks using custom TCP packets. Meanwhile, the server listens for TCP packets on a specified port, extracts the data from the SACK options, and reassembles the original file based on the TCP sequence numbers.
 
----
 
 ## How It Works ⚙️
 
@@ -47,7 +45,6 @@ The idea behind this project is to send file data covertly within TCP packets. T
   - Sorts the received chunks by TCP sequence number and concatenates them to reconstruct the original file.
   - Saves the reassembled file locally and logs the process in `server_debug.log`.
 
----
 
 ## Note: look like a Real Traffic 🔍
 A unique 4-byte marker (`0xDEADBEEF`) is used to confirm that the SACK option actually contains our file data.
@@ -64,7 +61,6 @@ SACK_start_seq_num = 0x00000000
 SACK_end_seq_num = 0x00000010  # Example end sequence number
 MARKER = SACK_start_seq_num  # Use start sequence number as marker
 ```
----
 
 ## Usage ⚡
 
@@ -78,7 +74,6 @@ MARKER = SACK_start_seq_num  # Use start sequence number as marker
 - Provide the target server’s IP, port, and the file path to be sent.
 - The client will send the file in chunks hidden in the SACK options.
 
----
 
 ## ⚠️ Warning: Lab-Only Use
 
