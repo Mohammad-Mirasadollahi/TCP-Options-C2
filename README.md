@@ -5,6 +5,14 @@ This project is a proof-of-concept for covert file transfer and C2 communication
 
 > **Note:** These scripts were developed with the help of ChatGPT.
 
+## ⚠️ Important Notes
+
+This project has been implemented in **two ways**:
+1. **Using SACK**: File data is embedded in the **SACK (Selective Acknowledgment)** option field within TCP packets.
+2. **Using Custom TCP Option**: A custom TCP option is created to carry the file data instead of using SACK.
+
+ **The following explanations are specific to the SACK implementation**.
+
 ## Overview 🔍
 
 The idea behind this project is to send file data covertly within TCP packets. The client splits a file into 4-byte chunks, packs each chunk with a unique marker into an 8-byte payload, and sends these chunks using custom TCP packets. Meanwhile, the server listens for TCP packets on a specified port, extracts the data from the SACK options, and reassembles the original file based on the TCP sequence numbers.
