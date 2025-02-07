@@ -74,6 +74,18 @@ MARKER = SACK_start_seq_num  # Use start sequence number as marker
 - Provide the target server’s IP, port, and the file path to be sent.
 - The client will send the file in chunks hidden in the SACK options.
 
+## 📌 Prerequisites  
+
+### 🛠️ Software Requirements  
+- **Python 3.6+**  
+- **Python Libraries:**  
+  - `scapy` → Packet crafting & sniffing  
+  - `logging`, `sys`, `struct`, `datetime` (built-in)  
+
+📌 **Install dependencies:**  
+```bash
+pip install scapy
+```
 
 ## ⚠️ Warning: Lab-Only Use
 
