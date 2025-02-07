@@ -62,18 +62,6 @@ SACK_end_seq_num = 0x00000010  # Example end sequence number
 MARKER = SACK_start_seq_num  # Use start sequence number as marker
 ```
 
-## Usage ⚡
-
-### Server Side:
-- Run the server script.
-- Enter the listening port and desired output file name when prompted.
-- The server will capture TCP packets for a predefined timeout period (default is 60 seconds).
-
-### Client Side:
-- Run the client script.
-- Provide the target server’s IP, port, and the file path to be sent.
-- The client will send the file in chunks hidden in the SACK options.
-
 ## 📌 Prerequisites  
 
 ### 🛠️ Software Requirements  
@@ -86,6 +74,20 @@ MARKER = SACK_start_seq_num  # Use start sequence number as marker
 ```bash
 pip install scapy
 ```
+
+## Usage ⚡
+
+### Server Side:
+- Run the server script.
+- Enter the listening port and desired output file name when prompted.
+- The server will capture TCP packets for a predefined timeout period (default is 60 seconds).
+- After transferring the file using the **Client** script, you should either stop the **Server** script manually by pressing **Ctrl + C**, or wait until the **timeout** period expires. Once the script has completed, it will display the name of the file that was successfully reassembled, Then you can open the downloaded file.
+
+### Client Side:
+- Run the client script.
+- Provide the target server’s IP, port, and the file path to be sent.
+- The client will send the file in chunks hidden in the SACK options.
+
 
 ## ⚠️ Warning: Lab-Only Use
 
